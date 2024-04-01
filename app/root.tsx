@@ -1,7 +1,6 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import { LinksFunction } from '@remix-run/node'
-import { NextUIProvider } from '@nextui-org/react'
-import stylesheet from '~/styles/global.css?url'
+import stylesheet from '~/tailwind.css?url'
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: stylesheet }]
 
@@ -15,11 +14,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <NextUIProvider>
-          <Outlet />
-          <ScrollRestoration />
-          <Scripts />
-        </NextUIProvider>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
       </body>
     </html>
   )
