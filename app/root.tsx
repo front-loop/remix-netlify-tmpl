@@ -1,6 +1,7 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import { LinksFunction } from '@remix-run/node'
-import stylesheet from '~/styles/global.css?url'
+import { cn } from '~/lib/utils'
+import stylesheet from '~/styles/globals.css?url'
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: stylesheet }]
 
@@ -13,7 +14,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className={cn('min-h-dvh font-sans antialiased')}>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
