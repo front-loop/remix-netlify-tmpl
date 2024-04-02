@@ -1,7 +1,11 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
-import { LinksFunction } from '@remix-run/node'
+import { LinksFunction, MetaFunction } from '@remix-run/node'
 import { cn } from '~/lib/utils'
 import stylesheet from '~/styles/globals.css?url'
+
+export const meta: MetaFunction = () => {
+  return [{ title: 'Remix @ Netlify' }, { name: 'description', content: 'Welcome to Remix!' }]
+}
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: stylesheet }]
 
