@@ -3,17 +3,16 @@ import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes'
 import { themeSessionResolver } from '~/services/session.server'
 import { cn } from '~/lib/utils'
+import { title } from './config.shared'
 import stylesheet from '~/styles/globals.css?url'
 
-export const meta: MetaFunction = () => [{ title: 'Remix @ Netlify' }]
+export const meta: MetaFunction = () => [{ title: title() }]
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: stylesheet }]
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const { getTheme } = await themeSessionResolver(request)
-  return {
-    theme: getTheme(),
-  }
+  return { theme: getTheme() }
 }
 
 export default function AppWithProviders() {
