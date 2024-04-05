@@ -1,9 +1,9 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
 import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes'
-import { themeSessionResolver } from '~/services/session.server'
-import { cn } from '~/lib/utils'
-import { title } from './config.shared'
+import { themeSessionResolver } from '~/utils/theme-session.server'
+import { cn } from '~/utils/cn'
+import { title } from '~/config.shared'
 import stylesheet from '~/styles/globals.css?url'
 
 export const meta: MetaFunction = () => [{ title: title() }]
