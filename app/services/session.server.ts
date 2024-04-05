@@ -1,17 +1,18 @@
 import { createCookieSessionStorage } from '@remix-run/node'
 import { createThemeSessionResolver } from 'remix-themes'
+import invariant from 'tiny-invariant'
 
-const isProduction = process.env.NODE_ENV === 'production'
+invariant(process.env.SESSION_SECRET, 'SESSION_SECRET must be set')
 
 const sessionStorage = createCookieSessionStorage({
   cookie: {
-    name: 'theme',
+    name: '__session',
     path: '/',
     httpOnly: true,
     sameSite: 'lax',
-    secrets: ['s3cr3t'],
+    secrets: [process.env.SESSION_SECRET],
     // Set domain and secure only if in production
-    ...(isProduction ? { domain: 'remix-tmpl.netlify.app', secure: true } : {}),
+    ...(process.env.NODE_ENV === 'production' ? { domain: process.env.DOMAIN_NAME, secure: true } : {}),
   },
 })
 
