@@ -5,6 +5,7 @@ import { themeSessionResolver } from '~/utils/theme-session.server'
 import { cn } from '~/utils/cn'
 import { title } from '~/config.shared'
 import stylesheet from '~/styles/globals.css?url'
+import { GlobalPendingIndicator } from './components/global-pending-indicator'
 
 export const meta: MetaFunction = () => [{ title: title() }]
 
@@ -38,6 +39,7 @@ export function App() {
         <Links />
       </head>
       <body className={cn('min-h-dvh font-sans antialiased')}>
+        <GlobalPendingIndicator />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
