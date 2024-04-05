@@ -1,11 +1,20 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  isRouteErrorResponse,
+  useLoaderData,
+  useRouteError,
+} from '@remix-run/react'
 import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
-import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes'
+import { PreventFlashOnWrongTheme, Theme, ThemeProvider, useTheme } from 'remix-themes'
 import { themeSessionResolver } from '~/utils/theme-session.server'
 import { cn } from '~/utils/cn'
 import { title } from '~/config.shared'
 import stylesheet from '~/styles/globals.css?url'
-import { GlobalPendingIndicator } from './components/global-pending-indicator'
+import { GlobalLoading } from './components/global-loading'
 
 export const meta: MetaFunction = () => [{ title: title() }]
 
@@ -20,12 +29,14 @@ export default function AppWithProviders() {
   const data = useLoaderData<typeof loader>()
   return (
     <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
-      <App />
+      <App>
+        <Outlet />
+      </App>
     </ThemeProvider>
   )
 }
 
-export function App() {
+export function App({ children }: { children: React.ReactNode }) {
   const data = useLoaderData<typeof loader>()
   const [theme] = useTheme()
 
@@ -39,8 +50,8 @@ export function App() {
         <Links />
       </head>
       <body className={cn('min-h-dvh font-sans antialiased')}>
-        <GlobalPendingIndicator />
-        <Outlet />
+        <GlobalLoading />
+        {children}
         <ScrollRestoration />
         <Scripts />
       </body>

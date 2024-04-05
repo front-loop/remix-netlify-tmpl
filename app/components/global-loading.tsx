@@ -1,7 +1,7 @@
 import { useNavigation } from '@remix-run/react'
 import { cn } from '~/utils/cn'
 
-export function GlobalPendingIndicator() {
+export function GlobalLoading() {
   const navigation = useNavigation()
   const isPending = navigation.state !== 'idle'
 
