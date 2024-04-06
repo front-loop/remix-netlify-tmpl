@@ -8,7 +8,7 @@ export function GlobalLoading() {
   return (
     <div className={cn('fixed inset-x-0 top-0', { hidden: !isPending })}>
       <div className="h-0.5 w-full overflow-hidden bg-muted">
-        <div className="h-full w-full origin-left-right animate-progress bg-muted-foreground" />
+        <div className="size-full origin-left-right animate-progress bg-muted-foreground" />
       </div>
     </div>
   )
