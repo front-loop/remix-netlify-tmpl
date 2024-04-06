@@ -1,15 +1,6 @@
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  isRouteErrorResponse,
-  useLoaderData,
-  useRouteError,
-} from '@remix-run/react'
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
 import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
-import { PreventFlashOnWrongTheme, Theme, ThemeProvider, useTheme } from 'remix-themes'
+import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes'
 import { themeSessionResolver } from '~/utils/theme-session.server'
 import { cn } from '~/utils/cn'
 import { title } from '~/config.shared'
