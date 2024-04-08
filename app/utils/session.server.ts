@@ -9,9 +9,10 @@ const sessionStorage = createCookieSessionStorage({
     httpOnly: true,
     sameSite: 'lax',
     secrets: [getRequiredEnvVar('SESSION_SECRET')],
-    // Set domain and secure only if in production
     ...(isProduction ? { domain: getRequiredEnvVar('DOMAIN_NAME'), secure: true } : {}),
   },
 })
 
 export const themeSessionResolver = createThemeSessionResolver(sessionStorage)
+
+export const { getSession, commitSession, destroySession } = sessionStorage

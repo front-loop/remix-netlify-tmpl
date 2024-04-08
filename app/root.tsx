@@ -1,7 +1,7 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
 import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes'
-import { themeSessionResolver } from '~/utils/theme-session.server'
+import { themeSessionResolver } from '~/utils/session.server'
 import { cn } from '~/utils/cn'
 import { title } from '~/config.shared'
 import stylesheet from '~/styles/globals.css?url'
