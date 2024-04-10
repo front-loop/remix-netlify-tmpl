@@ -1,6 +1,9 @@
 import type { Config } from 'tailwindcss'
 import svgToDataUri from 'mini-svg-data-uri'
-// @ts-expect-error
+import twAnimate from 'tailwindcss-animate'
+import twScrollbar from 'tailwind-scrollbar'
+import twTypography from '@tailwindcss/typography'
+// @ts-expect-error no type
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
 
 function addVariablesForColors({ addBase, theme }: any) {
@@ -88,9 +91,9 @@ const config = {
     },
   },
   plugins: [
-    require('tailwindcss-animate'),
-    require('tailwind-scrollbar'),
-    require('@tailwindcss/typography'),
+    twAnimate,
+    twScrollbar,
+    twTypography,
     addVariablesForColors,
     function ({ matchUtilities, theme }: any) {
       matchUtilities(

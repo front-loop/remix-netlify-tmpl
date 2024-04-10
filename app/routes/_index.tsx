@@ -5,7 +5,7 @@ import { Button } from '~/components/ui/button'
 export default function Index() {
   return (
     <div className="relative size-full bg-white bg-grid-medium-black/[0.2] dark:bg-black dark:bg-grid-medium-white/[0.2]">
-      <div className="pointer-events-none absolute inset-0 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
+      <div className="pointer-events-none absolute inset-0 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black" />
       <div className="flex h-dvh flex-col items-center justify-center gap-5">
         <h1 className="font-serif text-3xl font-bold">Welcome to Remix</h1>
         <div className="flex gap-3">
